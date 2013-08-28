@@ -513,7 +513,15 @@ class Ion_auth
 		return $check_all;
 	}
 	
-	public function getGuestUser(){
+	public function get_loggedin_user(){
+	  if($this->logged_in()){
+	    return($this->ion_auth_model->user()->row());
+	  }else{
+	    return($this->get_guest_user());
+	  }
+	}
+	
+	public function get_guest_user(){
 	  $guest = new stdClass();
 	  
 	  $guest->id = 0;
