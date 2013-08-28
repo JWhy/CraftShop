@@ -2,7 +2,7 @@
 <p><?php echo lang('index_subheading');?></p>
 
 <?php if(isset($message) && strlen($message) > 0): ?>
-<div id="infoMessage" class="alert alert-error"><?php echo $message;?></div>
+<div id="infoMessage" class="alert"><?php echo $message;?></div>
 <?php endif;?>
 
 <table class="table">

@@ -1,5 +1,9 @@
 <?php 
-  $user = $this->ion_auth->user()->row();
+  $user = $this->ion_auth->get_loggedin_user();
+  $loggedin = $this->ion_auth->logged_in();
+  $name = ($loggedin && strlen($user->first_name) != 0)
+    ? $user->first_name . ' ' . $user->last_name
+    : $user->username;
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +18,7 @@
   <div class="container">
 
     <div class="row span8 offset2">
-      <div class="navbar navbar-inverse">
+      <div class="navbar navbar-inverse" id="main_nav">
         <div class="navbar-inner">
           <ul class="nav">
             <li <?php if($this->uri->uri_string() == '') echo 'class="active"'; ?>><?php echo anchor("/", "Home"); ?></li>
@@ -23,10 +27,11 @@
           <ul class="nav pull-right">
             <?php if($this->ion_auth->logged_in()): ?> 
             <li <?php if($this->uri->uri_string() == 'profile') echo 'class="active"'; ?>>
-              <?php echo anchor("#", $user->username); ?> 
+              <?php echo anchor("#", $name); ?> 
               <ul class="dropdown-menu">
-                <li><?php echo anchor("profile", 'Your Profile'); ?></li>
-                <li><?php echo anchor("auth/logout", "Logout"); ?></li>
+                <?php if($this->ion_auth->is_admin()): ?><li><?php echo anchor('admin', 'Admin Panel')?></li><?php endif; ?> 
+                <li><?php echo anchor('profile', 'Your Profile'); ?></li>
+                <li><?php echo anchor('auth/logout', 'Logout'); ?></li>
               </ul>
             </li>
             <?php else: ?> 
@@ -37,6 +42,6 @@
       </div>
     </div>
 
-    <div class="row span8 offset2">
+    <div class="row span8 offset2 page-content">
       <?php if(!@$hide_heading): ?>
       <h1><?php isset($title) ? print $title : print 'CraftShop'; ?></h1><?php endif;?> 

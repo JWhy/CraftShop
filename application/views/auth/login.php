@@ -2,7 +2,7 @@
 <p><?php echo lang('login_subheading');?></p>
 
 <?php if(isset($message) && strlen($message) > 0): ?>
-<div id="infoMessage" class="alert alert-error"><?php echo $message;?></div>
+<div id="infoMessage" class="alert"><?php echo $message;?></div>
 <?php endif;?>
 <?php echo form_open("auth/login", array(
     'class' => 'login-form',
@@ -11,9 +11,9 @@
 
 <div class="control-group">
   <?php echo form_input(array_merge($identity, array(
-    'name' => 'username',
+    'name' => 'identity',
   	'class' => 'login-field',
-    'placeholder' => 'Username',
+    'placeholder' => 'Username or E-Mail',
     'id' => 'login-name'
   ))); ?> 
   <label class="login-field-icon fui-user" for="login-name"></label>
