@@ -21,7 +21,7 @@ class Jsonapi{
   
   public function getBasicProfile($username){
     $profile['name'] = $username;
-    $profile['balance'] = $this->getBalance('eragonw');
+    $profile['balance'] = $this->getBalance($username);
     return($profile);
   }
   
