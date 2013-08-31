@@ -1,6 +1,6 @@
 <?php
 
-class Admin extends CI_Controller {
+class Home extends CI_Controller {
   
   public function index() {
     if($this->check_admin() === true){
@@ -25,8 +25,9 @@ class Admin extends CI_Controller {
       $data['urls'] = $this->itemapi->getUrls();
       $data['update'] = $this->itemapi->getList(true);
       
-      $this->mcitems->apply_update($data['update']->data->data);
+      $updated = $this->mcitems->apply_update($data['update']->data->data);
       
+      $data['updated'] = $updated;
       $data['title'] = 'Update Items';
       $this->load->view('general/header', $data);
       $this->load->view('admin/update_items', $data);
@@ -35,17 +36,6 @@ class Admin extends CI_Controller {
     }
   }
   
-  private function check_admin() {
-    if(! $this->ion_auth->logged_in()){
-      redirect('auth/login', 'refresh');
-      return (false);
-    }elseif(! $this->ion_auth->is_admin()){
-      return show_error('You must be an administrator to view this page.');
-    }else{
-      return (true);
-    }
-  }
-
 }
 
 ?>
