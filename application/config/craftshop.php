@@ -14,7 +14,7 @@ $config['jsonapi'] = array(
 $config['itemapi'] = array(
     
     'urls' => array(
-        'image' => 'http://static.adminiumapp.com/data_values/images/%1$u.png',
+        'image' => 'http://static.adminiumapp.com/data_values/images/%1$u-%2$u.png',
         'list' => 'http://static.adminiumapp.com/data_values/cache.json'
     )
     
