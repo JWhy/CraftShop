@@ -1,7 +1,21 @@
-h1{
+h1 {
   margin-bottom: 1em;
 }
 
-.page-content{
-  padding: 0px 5px;    
+.page-content {
+  padding: 0px 5px;
+}
+
+.admin_button_cont {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.itemmanager_itembox {
+  float: left;
+  margin-bottom: 5px;
+}
+
+.itemmanager_itembox div {
+  display: none;
 }
