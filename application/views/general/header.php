@@ -17,7 +17,7 @@
 <body>
   <div class="container">
 
-    <div class="row span8 offset2">
+    <div class="row">
       <div class="navbar navbar-inverse" id="main_nav">
         <div class="navbar-inner">
           <ul class="nav">
@@ -27,7 +27,7 @@
           <ul class="nav pull-right">
             <?php if($this->ion_auth->logged_in()): ?> 
             <li <?php if($this->uri->uri_string() == 'profile') echo 'class="active"'; ?>>
-              <?php echo anchor("#", $name); ?> 
+              <a href="#"><?php echo $name; ?></a> 
               <ul class="dropdown-menu">
                 <?php if($this->ion_auth->is_admin()): ?><li><?php echo anchor('admin', 'Admin Panel')?></li><?php endif; ?> 
                 <li><?php echo anchor('profile', 'Your Profile'); ?></li>
@@ -42,6 +42,6 @@
       </div>
     </div>
 
-    <div class="row span8 offset2 page-content">
+    <div class="row page-content">
       <?php if(!@$hide_heading): ?>
       <h1><?php isset($title) ? print $title : print 'CraftShop'; ?></h1><?php endif;?> 
