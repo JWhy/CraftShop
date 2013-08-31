@@ -6,10 +6,10 @@ if(! defined('BASEPATH'))
 class Profile extends CI_Controller {
   
   public function index() {
+    $this->config->load('craftshop');
     $user = $this->ion_auth->user()->row();
     if($user == null) $user = $this->ion_auth->getGuestUser(); 
     
-    $this->config->load('craftshop');
     $profile = array();
     if($this->ion_auth->logged_in()){
       $this->load->library('jsonapi', $this->config->item('jsonapi'));
@@ -30,6 +30,3 @@ class Profile extends CI_Controller {
   }
 
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
