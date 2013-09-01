@@ -15,7 +15,7 @@ class Items extends MY_Controller {
       
       $data['title'] = 'Item Database Manager';
       $data['items'] = $this->mcitems->get_all();
-      $data['img_url'] = $itemapi_cfg['urls']['image'];
+      $data['img_url'] = $itemapi_cfg['urls']['local_image'];
       
       $this->load->view('general/header', $data);
       $this->load->view('admin/items/list_items', $data);

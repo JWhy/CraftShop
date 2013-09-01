@@ -25,9 +25,12 @@ class Home extends MY_Controller {
       $data['urls'] = $this->itemapi->getUrls();
       $data['update'] = $this->itemapi->getList(true);
       
-      $updated = $this->mcitems->apply_update($data['update']->data->data);
-      
-      $data['updated'] = $updated;
+      $db_status = $this->mcitems->apply_update($data['update']->data->data);
+      $updated_imgs = $this->itemapi->updateImages($data['urls']['image'], $itemapi_cfg['local_img_path']);
+
+      $data['db_status'] = $db_status;
+      $data['img_status'] = $updated_imgs;
+      $data['img_dest'] = $itemapi_cfg['local_img_path'];
       $data['title'] = 'Update Items';
       $this->load->view('general/header', $data);
       $this->load->view('admin/update_items', $data);
