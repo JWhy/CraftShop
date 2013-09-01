@@ -35,8 +35,29 @@ class Itemapi {
     return($retrn);
   }
   
-  public function updateImages(){
+  public function updateImages($img_url, $dest_dir){
+    $this->CI =& get_instance();
+    $this->CI->load->model('minecraftitem_model', 'mcitems');
     
+    if(!file_exists($dest_dir)) mkdir($dest_dir, 755, true);
+    $items = $this->CI->mcitems->get_all();
+    $status['updated'] = 0;
+    $status['skipped'] = 0;
+    
+    foreach($items as $item){
+      $itemid_string = $item['item_id'] . '-' . $item['item_damage'];
+      $get_url = sprintf($img_url, $item['item_id'], $item['item_damage']);
+      
+      $img_dest = $dest_dir . $itemid_string . '.png';
+      
+      if(!file_exists($img_dest)){
+        file_put_contents($img_dest, file_get_contents($get_url));
+        $status['updated']++;
+      }else{
+        $status['skipped']++;
+      }
+    }
+    return($status);
   }
   
   public function getUrls(){
