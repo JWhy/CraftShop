@@ -12,10 +12,6 @@ h1 {
 }
 
 .itemmanager_itembox {
-  float: left;
   margin-bottom: 5px;
-}
-
-.itemmanager_itembox div {
-  display: none;
+  heigth: 100% !important;
 }

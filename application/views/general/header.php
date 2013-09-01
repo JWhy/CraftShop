@@ -7,10 +7,9 @@
 ?><!DOCTYPE html>
 <html>
 <head>
-  <meta charset=utf-8 />
+  <meta charset="utf-8" />
   <title><?php isset($title) ? print $title : print 'Page'; ?> · CraftShop</title>
   <?php echo link_tag('assets/bootstrap/css/bootstrap.css'); ?> 
-  <?php //echo link_tag('assets/js/bootstrap.min.js'); ?> 
   <?php echo link_tag('assets/css/flat-ui.css'); ?> 
   <?php echo link_tag('assets/css/app.css'); ?> 
 </head>
