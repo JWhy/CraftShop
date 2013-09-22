@@ -5,7 +5,7 @@ class Items extends MY_Controller {
   public function __construct() {
     parent::__construct();
     $this->config->load('craftshop');
-    $this->load->model('minecraftitem_model', 'mcitems');
+    $this->load->model('mcitem_model', 'mcitems');
   }
   
   public function index() {
@@ -30,16 +30,17 @@ class Items extends MY_Controller {
       return (redirect('items'));
     }else{
       
-      $item = $this->mcitems->get_item($item_id, $damage);
+      $item = $this->mcitems->get_item($item_id, $damage, true);
       if(! $item){
         $this->session->set_flashdata('notice', "The specified item (ID: $item_id, Data: $damage) could not be found;");
         return (redirect('items'));
       }else{
-        
         $itemapi_cfg = $this->config->item('itemapi');
+        $iconomy_cfg = $this->config->item('iconomy');
         
         $data['title'] = $item->name;
         $data['item'] = $item;
+        $data['currency'] = $iconomy_cfg['currency'];
         $data['img_url'] = $itemapi_cfg['urls']['local_image'];
         
         $this->load->view('general/header', $data);
