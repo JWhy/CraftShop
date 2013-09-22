@@ -20,3 +20,15 @@ h1 {
   float: left;
   margin: 0.5em 1em 1em 0.5em;
 }
+
+.viewitem_offers {
+  width: 300px;
+}
+
+.viewitem_offers td {
+  vertical-align: middle;
+}
+
+.viewitem_offers a.btn-mini {
+  padding: 3px 10px;
+}
