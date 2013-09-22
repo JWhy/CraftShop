@@ -1,8 +1,8 @@
 <?php
 
 class Minecraftitem_model extends My_Model {
-    
-    private $default_inavailable = array('0-0', '383-0');
+
+    private $default_inavailable = array('0-0', '383-0', '8-0', '10-0');
     
     public function get_all($show_hidden = false){
       if($show_hidden){
