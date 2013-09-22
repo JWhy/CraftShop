@@ -1,5 +1,9 @@
 <?php
 
+$config['iconomy'] = array(
+	'currency' => '$'
+);
+
 $config['jsonapi'] = array(
     
     // JSONAPI connection settings
@@ -13,8 +17,10 @@ $config['jsonapi'] = array(
 
 $config['itemapi'] = array(
     
+    'local_img_path' => 'assets/items/',
     'urls' => array(
         'image' => 'http://static.adminiumapp.com/data_values/images/%1$u-%2$u.png',
+        'local_image' => 'assets/items/%1$u-%2$u.png',
         'list' => 'http://static.adminiumapp.com/data_values/cache.json'
     )
     
