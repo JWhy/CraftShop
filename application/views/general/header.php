@@ -44,3 +44,7 @@
     <div class="row page-content">
       <?php if(!@$hide_heading): ?>
       <h1><?php isset($title) ? print $title : print 'CraftShop'; ?></h1><?php endif;?> 
+      <?php if($this->session->flashdata('notice')): ?> 
+      <div class="alert">
+        <strong>Warning!</strong> <?php echo($this->session->flashdata('notice')); ?>
+      </div><?php endif;?>
