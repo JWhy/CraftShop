@@ -1,9 +1,17 @@
 <?php
 
 class Minecraftitem_model extends My_Model {
-    protected $return_type = 'array';
     
     private $default_inavailable = array('0-0', '383-0');
+    
+    public function get_all($show_hidden = false){
+      if($show_hidden){
+        return(parent::get_all());
+      }else{
+        $this->_set_where(array('available = 1'));
+        return(parent::get_all());
+      }
+    }
     
     public function apply_update($items){
       $status['updated'] = 0;
@@ -16,6 +24,15 @@ class Minecraftitem_model extends My_Model {
         }
       }
       return($status);
+    }
+    
+    public function get_item($item_id, $damage){
+      $item = $this->get_by(array(
+      	'item_id' => $item_id,
+        'item_damage' => $damage
+      ));
+      
+      return (sizeof($item) != 0)? $item : false;
     }
     
     private function update_item($item){
