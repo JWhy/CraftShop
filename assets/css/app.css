@@ -15,3 +15,8 @@ h1 {
   margin-bottom: 5px;
   heigth: 100% !important;
 }
+
+.viewitem_thumb {
+  float: left;
+  margin: 0.5em 1em 1em 0.5em;
+}
