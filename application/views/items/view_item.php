@@ -15,8 +15,8 @@
     <?php foreach($item->offers as $offer): ?> 
     <tr>
       <td><?php echo $offer->quantity; ?></td>
-      <td><?php echo $offer->price . $currency; ?></td>
-      <td><?php echo anchor('items/buy/' . $item->id, 'Buy', array('class' => 'btn btn-mini btn-success')); ?></td>
+      <td><?php printf($currency, $offer->price); ?></td>
+      <td><?php echo anchor('items/buy/' . $offer->id, 'Buy', array('class' => 'btn btn-mini btn-success')); ?></td>
     </tr>
     <?php endforeach; ?> 
   </table>
