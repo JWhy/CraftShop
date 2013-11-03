@@ -1,7 +1,7 @@
 <?php
 
 $config['iconomy'] = array(
-	'currency' => '$'
+	'currency' => '$%u'
 );
 
 $config['jsonapi'] = array(
